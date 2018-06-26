@@ -5,7 +5,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+    <link rel="icon" href="dist/images/markers-matte.png" sizes="16x16" type="image/png"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
@@ -109,17 +109,18 @@
     <script>
 
         // mapview creation
-        var mymap = L.map('map').setView([34.3587427, 47.0728447], 16);
-    // Add a tile layer to the mapview
-        L.tileLayer('http://149.56.252.54/tile/{z}/{x}/{y}.png', {
+        var mymap = L.map('map').setView([34.3587427, 47.0728447], 12);
+
+        // Add a tile layer to the mapview
+        var map = L.tileLayer('http://149.56.252.54/tile/{z}/{x}/{y}.png', {
             maxZoom: 22,
             
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
+            attribution: '<a href="http://freetux.gitlab.io">Hamdi Saydy</a>|Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
         }).addTo(mymap);
     
 
         L.easyButton( 'fa-location-arrow', function(){
-            mymap.locate({setView: true, maxZoom: 16});
+            mymap.locate({setView: true, maxZoom: 12});
         }).addTo(mymap);
 
 
@@ -129,7 +130,7 @@
     
     
         function onEachFeature(feature, layer) {
-            var popupContent = "<p>ایستگاه اتوبوس " +
+            var popupContent = "<p>ایستگاه  " +
                     feature.properties.name + "</p>";
             if (feature.properties && feature.properties.popupContent) {
                 popupContent += feature.properties.popupContent;
@@ -138,7 +139,7 @@
         }
         
     
-        L.geoJson(kshbus, {
+        var buses = L.geoJson(kshbus, {
                 style: function (feature) {
                     return feature.properties && feature.properties.style;
                 },
@@ -149,10 +150,22 @@
                 }
             }).addTo(mymap);
     
-        L.geoJson(line10, {
+       var routes =  L.geoJson(line10, {
                
-        }).addTo(mymap);
-    
+        })
+
+
+        var baseMaps = {
+            "نقشه": map,
+        };
+
+        var overlayMaps = {
+            "ایستگاه ها": buses,
+            "مسیر ها" : routes
+        };
+        
+        L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(mymap);
+
         var popup = L.popup();
     
         function onMapClick(e) {
