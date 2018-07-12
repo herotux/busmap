@@ -37,7 +37,7 @@
         <div class="sidebar-tabs">
             <ul role="tablist">
                 <li><a href="#home" role="tab"><i class="fas fa-bus"></i></a></li>
-                <li><a href="#profile" role="tab"><i class="fa fa-map-signs"></i></a></li>
+                <li><a href="#routes" role="tab"><i class="fa fa-map-signs"></i></a></li>
                 <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
                 <li><a href="https://gitlab.com/freetux/busmap" role="tab" target="_blank"><i class="fab fa-gitlab"></i></a></li>
             </ul>
@@ -73,9 +73,10 @@
 
             </div>
 
-            <div class="sidebar-pane" id="profile">
+            <div class="sidebar-pane" id="routes">
                 <h1 class="sidebar-header">مسیر ها<span class="sidebar-close"><i class="fa fa-caret-right"></i></span></h1>
-                <ul class="list-group">
+
+				<ul class="list-group">
 					<li class="list-group-item">مسیرها</li>
 					
 					
@@ -112,7 +113,7 @@
         var mymap = L.map('map').setView([34.3587427, 47.0728447], 12);
 
         // Add a tile layer to the mapview
-        var map = L.tileLayer('http://149.56.252.54/tile/{z}/{x}/{y}.png', {
+        var map = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 22,
             
             attribution: '<a href="http://freetux.gitlab.io">Hamdi Saydy</a>|Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
