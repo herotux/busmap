@@ -8,7 +8,7 @@ jobs:
   github-pages:
     runs-on: ubuntu-latest
     steps:
-      - peaceiris/actions-gh-pages@v3
+       peaceiris/actions-gh-pages@v3
         
     github_token: ${{ secrets.JEKYLL_PAT }}
     publish_dir: ./public
