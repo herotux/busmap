@@ -1,9 +1,4 @@
 name: Deploy
-on:
-  push:
-    branches:
-      - master
-runs-on: ubuntu-latest
 uses: peaceiris/actions-gh-pages@v3      
 github_token: ${{ secrets.JEKYLL_PAT }}
 publish_dir: ./public
