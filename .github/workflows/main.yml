@@ -1,4 +1,4 @@
 name: Deploy
 uses: peaceiris/actions-gh-pages@v3      
-github_token: ${{ secrets.JEKYLL_PAT }}
+github_token: ${{ secrets.BUSMAP_TOKEN }}
 publish_dir: ./public
