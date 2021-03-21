@@ -1,5 +1,4 @@
 name: Deploy the static file to GitHub Page
-
 on: [push]
 jobs:
 
