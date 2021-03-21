@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - master
-
-jobs:
-  github-pages:
     runs-on: ubuntu-latest
     uses: peaceiris/actions-gh-pages@v3      
     github_token: ${{ secrets.JEKYLL_PAT }}
